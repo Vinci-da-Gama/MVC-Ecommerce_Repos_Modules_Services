@@ -1,0 +1,6 @@
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\bin\Debug\eCommerce.Contracts.dll
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\bin\Debug\eCommerce.Contracts.pdb
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.csprojResolveAssemblyReference.cache
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.dll
+C:\Users\Anubis\VsPj\FundationPj_Practice\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.pdb

@@ -1,0 +1,50 @@
+﻿@model eCommerce.Models.Product
+
+@{
+    ViewBag.Title = "DetailsDisplay";
+}
+
+<h2>DetailsDisplay</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img class="imgwidth15per" src="~/images/@Model.ImageUrl" alt="@Model.Description" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Add It To Basket", "AddToBasket", new { Pid = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

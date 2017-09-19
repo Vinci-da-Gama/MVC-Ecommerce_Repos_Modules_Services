@@ -1,0 +1,46 @@
+﻿@model IEnumerable<eCommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Product Home";
+}
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+    </tr>
+    @if(Model.Count() > 0) {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*~/images/@item.ImageUrl*@
+                    <img class="imgwidth15per" src="~/images/@item.ImageUrl" alt="@item.Description" />
+                </td>
+                <td>
+                    @Html.ActionLink(item.Description, "DetailsDisplay", new { Pid = item.ProductId })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">
+                There is no Products.
+            </td>
+        </tr>
+    }
+
+</table>
