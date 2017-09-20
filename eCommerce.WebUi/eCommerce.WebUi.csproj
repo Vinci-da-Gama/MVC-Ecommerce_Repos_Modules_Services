@@ -298,6 +298,7 @@
     <Content Include="Views\Admin\EditProduct.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DetailsDisplay.cshtml" />
+    <Content Include="Views\Home\BasketSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +321,10 @@
     <ProjectReference Include="..\eCommerce.Model\eCommerce.Models.csproj">
       <Project>{eb79d919-eeb9-4f52-9546-a97f412c50d7}</Project>
       <Name>eCommerce.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eCommerce.Services\eCommerce.Services.csproj">
+      <Project>{e2beabc4-3bb1-4e6c-84d6-e2bbb0d51ef9}</Project>
+      <Name>eCommerce.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

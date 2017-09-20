@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using eCommerce.Services;
 
 namespace eCommerce.WebUi.Controllers
 {
@@ -15,11 +16,22 @@ namespace eCommerce.WebUi.Controllers
         IRepositoryBase<Customer> Customers;
         IRepositoryBase<Product> Products;
         IRepositoryBase<Basket> Basket;
-        public HomeController(IRepositoryBase<Customer> custs, IRepositoryBase<Product> pds, IRepositoryBase<Basket> bsk)
+        IRepositoryBase<Voucher> Vouchers;
+        IRepositoryBase<VoucherType> VoucherTypes;
+        IRepositoryBase<BasketVoucher> BasketVouchers;
+
+        BasketService bs;
+
+        public HomeController(IRepositoryBase<Customer> custs, IRepositoryBase<Product> pds, IRepositoryBase<Basket> bsk, IRepositoryBase<Voucher> vcs, IRepositoryBase<VoucherType> vts, IRepositoryBase<BasketVoucher> bvs)
         {
             this.Customers = custs;
             this.Products = pds;
             this.Basket = bsk;
+            this.Vouchers = vcs;
+            this.VoucherTypes = vts;
+            this.BasketVouchers = bvs;
+
+            bs = new BasketService(this.Basket, this.Vouchers, this.VoucherTypes, this.BasketVouchers);
         }
 
         public ActionResult Index()
@@ -36,6 +48,28 @@ namespace eCommerce.WebUi.Controllers
         {
             Product pd = Products.GetById(Pid);
             return View(pd);
+        }
+
+        public ActionResult BasketSummary()
+        {
+            Basket bkt = bs.FetchBasket(this.HttpContext);
+            return View(bkt);
+        }
+
+        public ActionResult AddPdToBasket(int Pid)
+        {
+            const int One = 1;
+            bool isSuccessful = bs.AddProductToBasket(this.HttpContext, Pid, One);
+
+            if (isSuccessful)
+            {
+                return RedirectToAction("BasketSummary");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
         }
     }
 }
