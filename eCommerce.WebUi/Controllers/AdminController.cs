@@ -25,7 +25,7 @@ namespace eCommerce.WebUi.Controllers
         {
             return View();
         }
-
+        #region Product_CRUD
         public ActionResult ProductList()
         {
             var model = Products.GetAll();
@@ -59,5 +59,33 @@ namespace eCommerce.WebUi.Controllers
             Products.Commit();
             return RedirectToAction("ProductList");
         }
+
+        [HttpGet]
+        public ActionResult ProductDetails(int Pid)
+        {
+            Product pdModel = Products.GetById(Pid);
+            return View(pdModel);
+        }
+
+        //public ActionResult ProductDelete(int Pid)
+        //{
+        //    Product pdModel = Products.GetById(Pid);
+        //    return View(pdModel);
+        //}
+
+        public ActionResult ProductDelete(int Pid)
+        {
+            Products.Delete(Pid);
+            Products.Commit();
+            return RedirectToAction("ProductList");
+        }
+
+        #endregion
+
+        #region Voucher_CRUD
+
+
+
+        #endregion
     }
 }
