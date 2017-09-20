@@ -123,9 +123,20 @@ namespace eCommerce.WebUi.Controllers
         }
 
         //DetailsVoucherType
-
+        [HttpGet]
+        public ActionResult DetailsVoucherType(int VtId)
+        {
+            var vt = VoucherTypes.GetById(VtId);
+            return View(vt);
+        }
 
         //DeleteVoucherType
+        //[HttpDelete]
+        public ActionResult DeleteVoucherType(int VtId)
+        {
+            VoucherTypes.Delete(VtId);
+            return RedirectToAction("VoucherTypeList");
+        }
 
         #endregion
 

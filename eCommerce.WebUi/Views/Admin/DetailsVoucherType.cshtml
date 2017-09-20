@@ -1,0 +1,42 @@
+﻿@model eCommerce.Models.VoucherType
+
+@{
+    ViewBag.Title = "Details_VoucherType";
+}
+
+<h2>DetailsVoucherType</h2>
+
+<div>
+    <h4>VoucherType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherModule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherModule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditVoucherType", new { VtId = Model.VoucherTypeId }) |
+    @Html.ActionLink("Back to List", "VoucherTypeList")
+</p>
