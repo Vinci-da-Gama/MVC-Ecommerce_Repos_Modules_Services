@@ -12,12 +12,15 @@ namespace eCommerce.WebUi.Controllers
     {
         IRepositoryBase<Customer> Customers;
         IRepositoryBase<Product> Products;
-        IRepositoryBase<Basket> Basket;
-        public AdminController(IRepositoryBase<Customer> custs, IRepositoryBase<Product> pds, IRepositoryBase<Basket> bsk)
+        //IRepositoryBase<Basket> Basket;
+        IRepositoryBase<VoucherType> VoucherTypes;
+        IRepositoryBase<Voucher> Vouchers;
+        public AdminController(IRepositoryBase<Customer> custs, IRepositoryBase<Product> pds, IRepositoryBase<VoucherType> vts, IRepositoryBase<Voucher> vcs)
         {
             this.Customers = custs;
             this.Products = pds;
-            this.Basket = bsk;
+            this.VoucherTypes = vts;
+            this.Vouchers = vcs;
         }
 
         // GET: Admin
@@ -82,9 +85,23 @@ namespace eCommerce.WebUi.Controllers
 
         #endregion
 
+        #region VoucherType_CRUD
+
+        public ActionResult VoucherTypeList()
+        {
+            var VtModel = VoucherTypes.GetAll();
+            return View(VtModel);
+        }
+
+        #endregion
+
         #region Voucher_CRUD
 
-
+        public ActionResult VoucherList()
+        {
+            var vModel = Vouchers.GetAll();
+            return View(vModel);
+        }
 
         #endregion
     }
