@@ -92,6 +92,40 @@ namespace eCommerce.WebUi.Controllers
             var VtModel = VoucherTypes.GetAll();
             return View(VtModel);
         }
+        // CreateNewVoucherType
+        public ActionResult CreateNewVoucherType()
+        {
+            VoucherType vt = new VoucherType();
+            return View(vt);
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewVoucherType(VoucherType vt)
+        {
+            VoucherTypes.Insert(vt);
+            VoucherTypes.Commit();
+            return RedirectToAction("VoucherTypeList");
+        }
+
+        //EditVoucherType
+        public ActionResult EditVoucherType(int VtId)
+        {
+            VoucherType VtModel = VoucherTypes.GetById(VtId);
+            return View(VtModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditVoucherType(VoucherType vt)
+        {
+            VoucherTypes.Update(vt);
+            VoucherTypes.Commit();
+            return RedirectToAction("VoucherTypeList");
+        }
+
+        //DetailsVoucherType
+
+
+        //DeleteVoucherType
 
         #endregion
 

@@ -7,7 +7,7 @@
 <h2>VoucherTypeList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New VoucherType", "CreateNewVoucherType")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VoucherTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VoucherTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VoucherTypeId })
+            @Html.ActionLink("Edit", "EditVoucherType", new { VtId=item.VoucherTypeId }) |
+            @Html.ActionLink("Details", "DetailsVoucherType", new { VtId=item.VoucherTypeId }) |
+            @Html.ActionLink("Delete", "DeleteVoucherType", new { VtId=item.VoucherTypeId })
         </td>
     </tr>
 }
