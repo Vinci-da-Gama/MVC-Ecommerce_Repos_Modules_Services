@@ -1,0 +1,82 @@
+﻿@model eCommerce.Models.Voucher
+
+@{
+    ViewBag.Title = "Voucher-Details";
+}
+
+<h2>VoucherDetails</h2>
+
+<div>
+    <h4>Voucher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppliesToProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppliesToProductId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinSpend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinSpend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.multipleUse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.multipleUse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedTo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditVoucher", new { Vid = Model.VoucherId }) |
+    @Html.ActionLink("Back to List", "VoucherList")
+</p>

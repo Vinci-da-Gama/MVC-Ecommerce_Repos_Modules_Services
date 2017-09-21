@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<eCommerce.Models.Voucher>
 
 @{
-    ViewBag.Title = "VoucherList";
+    ViewBag.Title = "Voucher-List";
 }
 
 <h2>VoucherList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Voucher", "CreateNewVoucher")
 </p>
 <table class="table">
     <tr>
@@ -65,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.AssignedTo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VoucherId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VoucherId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VoucherId })
+            @Html.ActionLink("Edit", "EditVoucher", new { Vid = item.VoucherId }) |
+            @Html.ActionLink("Details", "VoucherDetails", new { Vid = item.VoucherId }) |
+            @Html.ActionLink("Delete", "DeleteVoucher", new { Vid = item.VoucherId })
         </td>
     </tr>
 }

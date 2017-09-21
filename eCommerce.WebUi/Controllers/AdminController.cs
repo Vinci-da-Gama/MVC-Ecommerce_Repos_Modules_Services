@@ -135,6 +135,7 @@ namespace eCommerce.WebUi.Controllers
         public ActionResult DeleteVoucherType(int VtId)
         {
             VoucherTypes.Delete(VtId);
+            VoucherTypes.Commit();
             return RedirectToAction("VoucherTypeList");
         }
 
@@ -146,6 +147,47 @@ namespace eCommerce.WebUi.Controllers
         {
             var vModel = Vouchers.GetAll();
             return View(vModel);
+        }
+
+        public ActionResult CreateNewVoucher()
+        {
+            Voucher vc = new Voucher();
+            return View(vc);
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewVoucher(Voucher newVoucher)
+        {
+            Vouchers.Insert(newVoucher);
+            Vouchers.Commit();
+            return RedirectToAction("VoucherList");
+        }
+
+        public ActionResult EditVoucher(int Vid)
+        {
+            Voucher vc = Vouchers.GetById(Vid);
+            return View(vc);
+        }
+
+        [HttpPost]
+        public ActionResult EditVoucher(Voucher vc)
+        {
+            Vouchers.Update(vc);
+            Vouchers.Commit();
+            return RedirectToAction("VoucherList");
+        }
+
+        public ActionResult VoucherDetails(int Vid)
+        {
+            Voucher vc = Vouchers.GetById(Vid);
+            return View(vc);
+        }
+
+        public ActionResult DeleteVoucher(int Vid)
+        {
+            Vouchers.Delete(Vid);
+            Vouchers.Commit();
+            return RedirectToAction("VoucherList");
         }
 
         #endregion
