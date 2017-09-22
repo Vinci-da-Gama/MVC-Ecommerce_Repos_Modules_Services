@@ -50,11 +50,10 @@
     <Compile Include="iModels\IProduct.cs" />
     <Compile Include="iModels\IVoucher.cs" />
     <Compile Include="iModels\IVoucherType.cs" />
+    <Compile Include="ModuleInterfaces\IeVoucher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\IRepositoryBase.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModuleInterfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

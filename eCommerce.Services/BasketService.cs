@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using eCommerce.Contracts.Repos;
+using eCommerce.Contracts.ModuleInterfaces;
 using eCommerce.Models;
 using System.Web;
 
@@ -120,16 +121,26 @@ namespace eCommerce.Services
                 if (vt != null)
                 {
                     BasketVoucher bv = new BasketVoucher();
-                    if (vt.Type == "MoneyOff")
+                    //if (vt.Type == "MoneyOff")
+                    //{
+                    //    MoneyOff(theVoucher, bkt, bv);
+                    //}
+                    //if (vt.Type == "PercentOff")
+                    //{
+                    //    PercentOff(theVoucher, bkt, bv);
+                    //}
+                    try
                     {
-                        MoneyOff(theVoucher, bkt, bv);
+                        IeVoucher VoucherProcess = Activator.CreateInstance(Type.GetType(vt.VoucherModule)) as IeVoucher;
+                        VoucherProcess.ProcessVoucher(theVoucher, bkt, bv);
+
+                        baskets.Commit();
                     }
-                    if (vt.Type == "PercentOff")
+                    catch (Exception ex)
                     {
-                        PercentOff(theVoucher, bkt, bv);
+                        throw new System.Exception(ex.ToString());
                     }
 
-                    baskets.Commit();
                 }
             }
             else
@@ -138,29 +149,29 @@ namespace eCommerce.Services
             }
         }
 
-        public void MoneyOff(Voucher targetVoucher, Basket basket, BasketVoucher bVoucher)
-        {
-            decimal basketTotal = basket.BasketTotal();
-            if (targetVoucher.MinSpend < basketTotal)
-            {
-                bVoucher.Value = targetVoucher.Value * -1;
-                bVoucher.VoucherCode = targetVoucher.VoucherCode;
-                bVoucher.VoucherDescription = targetVoucher.VoucherDescription;
-                bVoucher.VoucherId = targetVoucher.VoucherId;
-                basket.AddBasketVoucher(bVoucher);
-            }
-        }
-        public void PercentOff(Voucher targetVoucher, Basket basket, BasketVoucher bVoucher)
-        {
-            if (targetVoucher.MinSpend > basket.BasketTotal())
-            {
-                bVoucher.Value = (targetVoucher.Value * (basket.BasketTotal() / 100)) * -1;
-                bVoucher.VoucherCode = targetVoucher.VoucherCode;
-                bVoucher.VoucherDescription = targetVoucher.VoucherDescription;
-                bVoucher.VoucherId = targetVoucher.VoucherId;
-                basket.AddBasketVoucher(bVoucher);
-            }
-        }
+        //public void MoneyOff(Voucher targetVoucher, Basket basket, BasketVoucher bVoucher)
+        //{
+        //    decimal basketTotal = basket.BasketTotal();
+        //    if (targetVoucher.MinSpend < basketTotal)
+        //    {
+        //        bVoucher.Value = targetVoucher.Value * -1;
+        //        bVoucher.VoucherCode = targetVoucher.VoucherCode;
+        //        bVoucher.VoucherDescription = targetVoucher.VoucherDescription;
+        //        bVoucher.VoucherId = targetVoucher.VoucherId;
+        //        basket.AddBasketVoucher(bVoucher);
+        //    }
+        //}
+        //public void PercentOff(Voucher targetVoucher, Basket basket, BasketVoucher bVoucher)
+        //{
+        //    if (targetVoucher.MinSpend > basket.BasketTotal())
+        //    {
+        //        bVoucher.Value = (targetVoucher.Value * (basket.BasketTotal() / 100)) * -1;
+        //        bVoucher.VoucherCode = targetVoucher.VoucherCode;
+        //        bVoucher.VoucherDescription = targetVoucher.VoucherDescription;
+        //        bVoucher.VoucherId = targetVoucher.VoucherId;
+        //        basket.AddBasketVoucher(bVoucher);
+        //    }
+        //}
 
         #endregion
     }

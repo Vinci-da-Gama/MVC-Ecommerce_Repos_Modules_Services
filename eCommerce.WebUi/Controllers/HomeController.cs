@@ -73,6 +73,8 @@ namespace eCommerce.WebUi.Controllers
 
         public ActionResult AddBasketVoucher(string VoucherCodeField)
         {
+            //eCommerce.Module.MoneyOff.eVoucherMoneyOff, eCommerce.Module.MoneyOff
+            //eCommerce.Module.PercentOff.eVoucherPercentOff, eCommerce.Module.PercentOff
             bs.AddBasketVoucher(VoucherCodeField, this.HttpContext);
             return RedirectToAction("BasketSummary");
         }
