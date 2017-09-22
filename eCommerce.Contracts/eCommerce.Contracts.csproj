@@ -53,5 +53,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\IRepositoryBase.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ModuleInterfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

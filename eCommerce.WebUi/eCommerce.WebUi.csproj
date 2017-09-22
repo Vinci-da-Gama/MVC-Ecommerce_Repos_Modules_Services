@@ -332,6 +332,14 @@
       <Project>{eb79d919-eeb9-4f52-9546-a97f412c50d7}</Project>
       <Name>eCommerce.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\eCommerce.Module.MoneyOff\eCommerce.Module.MoneyOff.csproj">
+      <Project>{46b103b8-fe4d-4b86-abe5-6e72bd79ab00}</Project>
+      <Name>eCommerce.Module.MoneyOff</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eCommerce.Module.PercentOff\eCommerce.Module.PercentOff.csproj">
+      <Project>{2fe7ece5-f426-4933-b3f5-f5687f94c1a2}</Project>
+      <Name>eCommerce.Module.PercentOff</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eCommerce.Services\eCommerce.Services.csproj">
       <Project>{e2beabc4-3bb1-4e6c-84d6-e2bbb0d51ef9}</Project>
       <Name>eCommerce.Services</Name>
