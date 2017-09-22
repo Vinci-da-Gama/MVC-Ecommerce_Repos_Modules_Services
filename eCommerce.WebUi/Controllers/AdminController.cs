@@ -152,6 +152,9 @@ namespace eCommerce.WebUi.Controllers
         public ActionResult CreateNewVoucher()
         {
             Voucher vc = new Voucher();
+            //These two for httpContext
+            ViewBag.VoucherTypes = VoucherTypes.GetAll();
+            ViewBag.Products = Products.GetAll();
             return View(vc);
         }
 

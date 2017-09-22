@@ -120,11 +120,11 @@ namespace eCommerce.Services
                 if (vt != null)
                 {
                     BasketVoucher bv = new BasketVoucher();
-                    if (bv.VoucherType == "MoneyOff")
+                    if (vt.Type == "MoneyOff")
                     {
                         MoneyOff(theVoucher, bkt, bv);
                     }
-                    if (bv.VoucherType == "PercentOff")
+                    if (vt.Type == "PercentOff")
                     {
                         PercentOff(theVoucher, bkt, bv);
                     }

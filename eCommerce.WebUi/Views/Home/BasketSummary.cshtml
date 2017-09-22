@@ -3,66 +3,107 @@
 @{
     ViewBag.Title = "BasketSummary";
 }
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Product_Name
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Price_Total
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var bi in Model.BasketItems)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(item => bi.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => bi.Quantity)
+                    </td>
+                    <td>
+                        @string.Format("{0:c}", bi.Product.Price * bi.Quantity)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteItemInBasket", new { id = bi.BasketItemId })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
-@*<h2>BasketSummary</h2>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Voucher_Code
+                    </th>
+                    <th>
+                        Voucher_Description
+                    </th>
+                    <th>
+                        Voucher_Value
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bv in Model.BasketVouchers) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => bv.VoucherCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => bv.VoucherDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => bv.Value)
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
-<div>
-    <h4>Basket</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
+    @using (Html.BeginForm("AddBasketVoucher", "Home"))
+    {
+        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
+        <div class="form-horizontal">
+            <h4>Basket-Vouchers</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class="text-danger" })
 
-    </dl>
-</div>*@
+            <div class="form-group">
+                <label for="EnterVoucherCodeField" class="col-sm-2 control-label">Enter Voucher Code:</label>
+                <div class="col-xs-12 col-sm-10">
+                    <input type="text" name="VoucherCodeField" id="EnterVoucherCodeField" class="form-control" />
+                </div>
+            </div>
 
-<div class="table-responsive">
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th>
-                    Product_Name
-                </th>
-                <th>
-                    Quantity
-                </th>
-                <th>
-                    Price_Total
-                </th>
-                <th>
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var bi in Model.BasketItems)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(item => bi.Product)
-                </td>
-                <td>
-                    @Html.DisplayFor(item => bi.Quantity)
-                </td>
-                <td>
-                    @string.Format("{0:c}", bi.Product.Price * bi.Quantity)
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "DeleteItemInBasket", new { id = bi.BasketItemId })
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn btn-primary">Add Voucher</button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.BasketId }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-
-
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.BasketId }) |*@
-    @Html.ActionLink("Back to List", "Index")
-</p>
